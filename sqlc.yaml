@@ -1,12 +1,12 @@
 version: "2"
 sql:
   - engine: "postgresql"
-    queries: "./db/queries"
-    schema: "./db/migrations"
+    queries: "./src/queries"
+    schema: "./src/migrations"
     gen:
       go:
-        package: 'db'
+        package: 'sqlc'
         emit_json_tags: true
         json_tags_case_style: "camel"
         emit_empty_slices: true
-        out: "./db/sqlc"
+        out: "./src/sqlc"

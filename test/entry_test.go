@@ -5,13 +5,13 @@ import (
 	"testing"
 	"time"
 
-	db "github.com/ndbac/go-log/db/sqlc"
+	sqlc "github.com/ndbac/go-log/src/sqlc"
 	util "github.com/ndbac/go-log/utils"
 	"github.com/stretchr/testify/require"
 )
 
-func createRandomEntry(t *testing.T, account db.Account) db.Entry {
-	arg := db.CreateEntryParams{
+func createRandomEntry(t *testing.T, account sqlc.Account) sqlc.Entry {
+	arg := sqlc.CreateEntryParams{
 		AccountID: account.ID,
 		Amount:    util.RandomMoney(),
 	}
@@ -53,7 +53,7 @@ func TestListEntries(t *testing.T) {
 		createRandomEntry(t, account)
 	}
 
-	arg := db.ListEntriesParams{
+	arg := sqlc.ListEntriesParams{
 		AccountID: account.ID,
 		Limit:     5,
 		Offset:    5,

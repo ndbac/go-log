@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	_ "github.com/lib/pq"
-	db "github.com/ndbac/go-log/db/sqlc"
+	sqlc "github.com/ndbac/go-log/src/sqlc"
 )
 
 const (
@@ -15,14 +15,14 @@ const (
 	dbSource = "postgresql://golog:golog@localhost:5432/golog?sslmode=disable"
 )
 
-var testQueries *db.Queries
+var testQueries *sqlc.Queries
 
 func TestMain(m *testing.M) {
 	conn, err := sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal("cannot connect to database")
 	}
-	testQueries = db.New(conn)
+	testQueries = sqlc.New(conn)
 
 	os.Exit(m.Run())
 }

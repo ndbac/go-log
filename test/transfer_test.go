@@ -5,13 +5,13 @@ import (
 	"testing"
 	"time"
 
-	db "github.com/ndbac/go-log/db/sqlc"
+	sqlc "github.com/ndbac/go-log/src/sqlc"
 	util "github.com/ndbac/go-log/utils"
 	"github.com/stretchr/testify/require"
 )
 
-func createRandomTransfer(t *testing.T, account1, account2 db.Account) db.Transfer {
-	arg := db.CreateTransferParams{
+func createRandomTransfer(t *testing.T, account1, account2 sqlc.Account) sqlc.Transfer {
+	arg := sqlc.CreateTransferParams{
 		FromAccountID: account1.ID,
 		ToAccountID:   account2.ID,
 		Amount:        util.RandomMoney(),
@@ -62,7 +62,7 @@ func TestListTransfer(t *testing.T) {
 		createRandomTransfer(t, account2, account1)
 	}
 
-	arg := db.ListTransfersParams{
+	arg := sqlc.ListTransfersParams{
 		FromAccountID: account1.ID,
 		ToAccountID:   account1.ID,
 		Limit:         5,
