@@ -24,4 +24,7 @@ migrate-down-1:
 migrate-create:
 	migrate create -ext sql -dir db/migrations -seq $(name)
 
+sqlc:
+	sqlc generate
+
 .PHONY: postgres createdb dropdb migrate-up migrate-up-1 migrate-down migrate-down-1
