@@ -10,19 +10,19 @@ dropdb:
 	docker exec -it postgres dropdb golog
 
 migrate-up:
-	migrate -path db-migration -database "$(DB_URI)" -verbose up
+	migrate -path src/migrations -database "$(DB_URI)" -verbose up
 
 migrate-up-1:
-	migrate -path db-migration -database "$(DB_URI)" -verbose up 1
+	migrate -path src/migrations -database "$(DB_URI)" -verbose up 1
 
 migrate-down:
-	migrate -path db-migration -database "$(DB_URI)" -verbose down
+	migrate -path src/migrations -database "$(DB_URI)" -verbose down
 
 migrate-down-1:
-	migrate -path db-migration -database "$(DB_URI)" -verbose down 1
+	migrate -path src/migrations -database "$(DB_URI)" -verbose down 1
 
 migrate-create:
-	migrate create -ext sql -dir db-migration -seq $(name)
+	migrate create -ext sql -dir src/migrations -seq $(name)
 
 sqlc:
 	sqlc generate
