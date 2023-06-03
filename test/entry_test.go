@@ -6,14 +6,13 @@ import (
 	"time"
 
 	sqlc "github.com/ndbac/go-log/src/sqlc"
-	util "github.com/ndbac/go-log/utils"
 	"github.com/stretchr/testify/require"
 )
 
 func createRandomEntry(t *testing.T, account sqlc.Account) sqlc.Entry {
 	arg := sqlc.CreateEntryParams{
 		AccountID: account.ID,
-		Amount:    util.RandomMoney(),
+		Amount:    RandomMoney(),
 	}
 
 	entry, err := testQueries.CreateEntry(context.Background(), arg)

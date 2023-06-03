@@ -16,8 +16,8 @@ jobs:
       postgres:
         image: postgres:14-alpine
         env:
-          POSTGRES_USER: root
-          POSTGRES_PASSWORD: secret
+          POSTGRES_USER: golog
+          POSTGRES_PASSWORD: golog
           POSTGRES_DB: golog
         ports:
           - 5432:5432
