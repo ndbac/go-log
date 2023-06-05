@@ -1,16 +1,15 @@
-package test
+package testSqlc
 
 import (
 	"context"
 	"fmt"
 	"testing"
 
-	sqlc "github.com/ndbac/go-log/src/sqlc"
+	"github.com/ndbac/go-log/src/sqlc"
 	"github.com/stretchr/testify/require"
 )
 
 func TestTransferTx(t *testing.T) {
-	fmt.Println(testDB)
 	store := sqlc.NewStore(testDB)
 
 	account1 := createRandomAccount(t)

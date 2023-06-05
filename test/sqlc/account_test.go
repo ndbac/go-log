@@ -1,4 +1,4 @@
-package test
+package testSqlc
 
 import (
 	"context"
@@ -6,15 +6,16 @@ import (
 	"testing"
 	"time"
 
-	sqlc "github.com/ndbac/go-log/src/sqlc"
+	"github.com/ndbac/go-log/src/sqlc"
+	"github.com/ndbac/go-log/test"
 	"github.com/stretchr/testify/require"
 )
 
 func createRandomAccount(t *testing.T) sqlc.Account {
 	arg := sqlc.CreateAccountParams{
-		Owner:    RandomOwner(),
-		Balance:  RandomMoney(),
-		Currency: RandomCurrency(),
+		Owner:    test.RandomOwner(),
+		Balance:  test.RandomMoney(),
+		Currency: test.RandomCurrency(),
 	}
 
 	account, err := testQueries.CreateAccount(context.Background(), arg)
@@ -53,7 +54,7 @@ func TestUpdateAccount(t *testing.T) {
 
 	arg := sqlc.UpdateAccountParams{
 		ID:      savedAccount.ID,
-		Balance: RandomMoney(),
+		Balance: test.RandomMoney(),
 	}
 
 	resAccount, err := testQueries.UpdateAccount(context.Background(), arg)

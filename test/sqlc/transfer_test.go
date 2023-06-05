@@ -1,11 +1,12 @@
-package test
+package testSqlc
 
 import (
 	"context"
 	"testing"
 	"time"
 
-	sqlc "github.com/ndbac/go-log/src/sqlc"
+	"github.com/ndbac/go-log/src/sqlc"
+	"github.com/ndbac/go-log/test"
 	"github.com/stretchr/testify/require"
 )
 
@@ -13,7 +14,7 @@ func createRandomTransfer(t *testing.T, account1, account2 sqlc.Account) sqlc.Tr
 	arg := sqlc.CreateTransferParams{
 		FromAccountID: account1.ID,
 		ToAccountID:   account2.ID,
-		Amount:        RandomMoney(),
+		Amount:        test.RandomMoney(),
 	}
 
 	transfer, err := testQueries.CreateTransfer(context.Background(), arg)

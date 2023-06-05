@@ -1,4 +1,4 @@
-package test
+package testSqlc
 
 import (
 	"database/sql"
@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	_ "github.com/lib/pq"
-	sqlc "github.com/ndbac/go-log/src/sqlc"
+	"github.com/ndbac/go-log/src/sqlc"
 )
 
 const (
