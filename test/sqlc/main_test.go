@@ -8,20 +8,18 @@ import (
 
 	_ "github.com/lib/pq"
 	"github.com/ndbac/go-log/src/sqlc"
-)
-
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://golog:golog@localhost:5432/golog?sslmode=disable"
+	util "github.com/ndbac/go-log/src/utils"
 )
 
 var testQueries *sqlc.Queries
 var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	var err error
-
-	testDB, err = sql.Open(dbDriver, dbSource)
+	config, err := util.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("cannot load config")
+	}
+	testDB, err = sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("cannot connect to database")
 	}
